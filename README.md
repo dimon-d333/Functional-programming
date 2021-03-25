@@ -119,14 +119,14 @@
 ```
 **42. Определите функцию, находящую максимальное из значений, находящихся в вершинах дерева.**
 ```lisp
-(defun max-shit (tree) (
+(defun max-elem (tree) (
     cond 
         ((null (first tree)) -1)
         ((not (or (second tree) (third tree))) (first tree))
-        (t (max (max-shit (second tree)) (max-shit (third tree))))))
+        (t (max (max-elem (second tree)) (max-elem (third tree))))))
 
 
-(print (max-shit '(1 (2 (6) ()) (3 () (10)))));10
+(print (max-elem '(1 (2 (6) ()) (3 () (10)))));10
 ```
 **47. Определите функцию УДАЛИТЬ-ВСЕ-СВОЙСТВА, которая удаляет все свойства символа.**
 ```lisp
