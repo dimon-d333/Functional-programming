@@ -119,11 +119,14 @@
 ```
 **42. Определите функцию, находящую максимальное из значений, находящихся в вершинах дерева.**
 ```lisp
+(defun max-c (a b) 
+    (if (> a b) a b))
+
 (defun max-elem (tree) (
     cond 
         ((null (first tree)) -1)
         ((not (or (second tree) (third tree))) (first tree))
-        (t (max (max-elem (second tree)) (max-elem (third tree))))))
+        (t (max-c (max-elem (second tree)) (max-elem (third tree))))))
 
 
 (print (max-elem '(1 (2 (6) ()) (3 () (10)))));10
