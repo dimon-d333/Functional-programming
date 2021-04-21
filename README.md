@@ -1,28 +1,5 @@
 # Functional-programming
 
-**1. Запишите последовательности вызовов CAR и CDR, выделяющие из приведенных ниже списков символ цели. Упростите эти вызовы с помощью комбинации селекторов:
-• (1 2 цель 3 4)
-• ((1) (2 цель) (3 (4)))
-• ((1 (2 (3 4 цель))))**
-```lisp
-(print (caddr '(1 2 цель 3 4)))
-(print (cadadr '((1) (2 цель) (3 (4)))))
-(print (caddar (cdadar  '((1 (2 (3 4 цель)))))))
-```
-**7. Определите функцию, удаляющую из исходного списка элементы с четными номерами.**
-```lisp
-(defun delete-even-num (w) 
-    (cond
-         ((null w) nil) 
-         (t (cons (car w) (delete-even-num (cddr w))))
-    )
-) 
- 
-(print (delete-even-num '(1 2 3 4 5 6))); (1 3 5)
-(print (delete-even-num '(1)));(1)
-(print (delete-even-num '(a b c d)));(A C)
-```
-
 **10. Определите функцию, осуществляющую удаление указанного количества последних элементов исходного списка.**
 ```lisp
 (defun delete-last-el (list n) 
@@ -35,21 +12,6 @@
 (print (delete-last-el '(1 2) 2)) ;NIL
 (print (delete-last-el '(a b 3 4 5) 3)) ;(A B)
 (print (delete-last-el '(1 2) 0)) ;(1 2)
-```
-**15. Определите функцию, вычисляющую скалярное произведение векторов, заданных списками целых чисел.**
-```lisp
-(defun scalar-product (list1 list2) 
-   ( (lambda (first-list1 first-list2 rest-list1 rest-list2)
-        (cond
-             ((null list1) 0) 
-             (t (+ (* first-list1 first-list2) (scalar-product rest-list1 rest-list2 )) )
-        )
-     ) (car list1)(car list2)(cdr list1)(cdr list2) ) 
-) 
-    
-(print (scalar-product '(1 2 3) '(1 2 3))) ;14
-(print (scalar-product '(5) '(5))) ;25
-(print (scalar-product '(6 3) '(1 1))) ;9
 ```
 **20. Определите функцию ПЕРВЫЙ-АТОМ, результатом которой будет первый атом списка**
 ```lisp
@@ -82,7 +44,52 @@
 (print ( pair '(a b) ) ) ; ((A B))
 (print ( pair '(a b c d e f) ) ) ; ((A B) (C D) (E F))
 ```
+
+**1. Запишите последовательности вызовов CAR и CDR, выделяющие из приведенных ниже списков символ цели. Упростите эти вызовы с помощью комбинации селекторов:
+• (1 2 цель 3 4)
+• ((1) (2 цель) (3 (4)))
+• ((1 (2 (3 4 цель))))**
+**Сдана**
+```lisp
+(print (caddr '(1 2 цель 3 4)))
+(print (cadadr '((1) (2 цель) (3 (4)))))
+(print (caddar (cdadar  '((1 (2 (3 4 цель)))))))
+```
+
+**7. Определите функцию, удаляющую из исходного списка элементы с четными номерами.**
+**Сдана**
+```lisp
+(defun delete-even-num (w) 
+    (cond
+         ((null w) nil) 
+         (t (cons (car w) (delete-even-num (cddr w))))
+    )
+) 
+ 
+(print (delete-even-num '(1 2 3 4 5 6))); (1 3 5)
+(print (delete-even-num '(1)));(1)
+(print (delete-even-num '(a b c d)));(A C)
+```
+
+**15. Определите функцию, вычисляющую скалярное произведение векторов, заданных списками целых чисел.**
+**Сдана**
+```lisp
+(defun scalar-product (list1 list2) 
+   ( (lambda (first-list1 first-list2 rest-list1 rest-list2)
+        (cond
+             ((null list1) 0) 
+             (t (+ (* first-list1 first-list2) (scalar-product rest-list1 rest-list2 )) )
+        )
+     ) (car list1)(car list2)(cdr list1)(cdr list2) ) 
+) 
+    
+(print (scalar-product '(1 2 3) '(1 2 3))) ;14
+(print (scalar-product '(5) '(5))) ;25
+(print (scalar-product '(6 3) '(1 1))) ;9
+```
+
 **39. Определите функцию СИММЕТРИЧЕСКАЯ-РАЗНОСТЬ, формирующую множество из элементов не входящих в оба множества.**
+**Сдана**
 ```lisp
 (defun поиск (list1 list2)
     (cond 
@@ -101,7 +108,9 @@
 (print (симметрическая-разность '(a b c d) '(c a b)) ) ;(d)
 (print (симметрическая-разность '(a b) '(c d)) ) ;(a b c d)
 ```
+
 **32. Определите предикат МНОЖЕСТВО-Р, который проверяет, является ли список множеством, т.е. входит ли каждый элемент в список лишь один раз.**
+**Сдана**
 ```lisp
 (defun множество-р(list)
     (( lambda( first rest )
@@ -117,7 +126,9 @@
 (print (множество-р '(a b c d a))); NIL - не множество
 (print (множество-р '())); T – множество
 ```
+
 **42. Определите функцию, находящую максимальное из значений, находящихся в вершинах дерева.**
+**Сдана**
 ```lisp
 (defun max-c (a b) 
     (if (> a b) a b))
@@ -131,7 +142,9 @@
 
 (print (max-elem '(1 (2 (6) ()) (3 () (10)))));10
 ```
+
 **47. Определите функцию УДАЛИТЬ-ВСЕ-СВОЙСТВА, которая удаляет все свойства символа.**
+**Сдана**
 ```lisp
 (defun удалить-все-свойства(x)
     ( (lambda (свойства)
