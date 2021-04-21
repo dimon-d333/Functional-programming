@@ -1,24 +1,5 @@
-;1. Запишите последовательности вызовов CAR и CDR, выделяющие из приведенных ниже списков символ цели. Упростите эти вызовы с помощью комбинации селекторов: • (1 2 цель 3 4) • ((1) (2 цель) (3 (4))) • ((1 (2 (3 4 цель))))
-
-(print (caddr '(1 2 цель 3 4)))
-(print (cadadr '((1) (2 цель) (3 (4)))))
-(print (caddar (cdadar  '((1 (2 (3 4 цель)))))))
-
-;7. Определите функцию, удаляющую из исходного списка элементы с четными номерами.
-
-(defun delete-even-num (w) 
-    (cond
-         ((null w) nil) 
-         (t (cons (car w) (delete-even-num (cddr w))))
-    )
-) 
- 
-(print (delete-even-num '(1 2 3 4 5 6))); (1 3 5)
-(print (delete-even-num '(1)));(1)
-(print (delete-even-num '(a b c d)));(A C)
-
 ;10. Определите функцию, осуществляющую удаление указанного количества последних элементов исходного списка.
-
+(print "Задача 10")
 (defun delete-last-el (list n) 
     (cond
          ((= (list-length  list) n) nil) 
@@ -30,23 +11,8 @@
 (print (delete-last-el '(a b 3 4 5) 3)) ;(A B)
 (print (delete-last-el '(1 2) 0)) ;(1 2)
 
-;15. Определите функцию, вычисляющую скалярное произведение векторов, заданных списками целых чисел.
-
-(defun scalar-product (list1 list2) 
-   ( (lambda (first-list1 first-list2 rest-list1 rest-list2)
-        (cond
-             ((null list1) 0) 
-             (t (+ (* first-list1 first-list2) (scalar-product rest-list1 rest-list2 )) )
-        )
-     ) (car list1)(car list2)(cdr list1)(cdr list2) ) 
-) 
-    
-(print (scalar-product '(1 2 3) '(1 2 3))) ;14
-(print (scalar-product '(5) '(5))) ;25
-(print (scalar-product '(6 3) '(1 1))) ;9
-
 ;20. Определите функцию ПЕРВЫЙ-АТОМ, результатом которой будет первый атом списка
-
+(print "Задача 20")
 (defun первый-атом (list) 
   ( ( lambda (first)
              (cond 
@@ -62,7 +28,7 @@
 (print (первый-атом '(((atom) a) b) ) ) ;ATOM
 
 ;26. Определите функцию, разбивающую список (a b с d...) на пары ((а b) (с d)...).
-
+(print "Задача 26")
 (defun pair(list)
     (( lambda (first second rest )
                ( cond
@@ -76,8 +42,42 @@
 (print ( pair '(a b) ) ) ; ((A B))
 (print ( pair '(a b c d e f) ) ) ; ((A B) (C D) (E F))
 
-;39. Определите функцию СИММЕТРИЧЕСКАЯ-РАЗНОСТЬ, формирующую множество из элементов не входящих в оба множества.
+;1. Запишите последовательности вызовов CAR и CDR, выделяющие из приведенных ниже списков символ цели. Упростите эти вызовы с помощью комбинации селекторов: • (1 2 цель 3 4) • ((1) (2 цель) (3 (4))) • ((1 (2 (3 4 цель))))
+(print "Задача 1. Сдана")
+(print (caddr '(1 2 цель 3 4)))
+(print (cadadr '((1) (2 цель) (3 (4)))))
+(print (caddar (cdadar  '((1 (2 (3 4 цель)))))))
 
+;7. Определите функцию, удаляющую из исходного списка элементы с четными номерами.
+(print "Задача 7. Сдана")
+(defun delete-even-num (w) 
+    (cond
+         ((null w) nil) 
+         (t (cons (car w) (delete-even-num (cddr w))))
+    )
+) 
+ 
+(print (delete-even-num '(1 2 3 4 5 6))); (1 3 5)
+(print (delete-even-num '(1)));(1)
+(print (delete-even-num '(a b c d)));(A C)
+
+;15. Определите функцию, вычисляющую скалярное произведение векторов, заданных списками целых чисел.
+(print "Задача 15. Сдана")
+(defun scalar-product (list1 list2) 
+   ( (lambda (first-list1 first-list2 rest-list1 rest-list2)
+        (cond
+             ((null list1) 0) 
+             (t (+ (* first-list1 first-list2) (scalar-product rest-list1 rest-list2 )) )
+        )
+     ) (car list1)(car list2)(cdr list1)(cdr list2) ) 
+) 
+    
+(print (scalar-product '(1 2 3) '(1 2 3))) ;14
+(print (scalar-product '(5) '(5))) ;25
+(print (scalar-product '(6 3) '(1 1))) ;9
+
+;39. Определите функцию СИММЕТРИЧЕСКАЯ-РАЗНОСТЬ, формирующую множество из элементов не входящих в оба множества.
+(print "Задача 39. Сдана")
 (defun поиск (list1 list2)
     (cond 
         ((null list1) nil)
@@ -96,7 +96,7 @@
 (print (симметрическая-разность '(a b) '(c d)) ) ;(a b c d)
 
 ;32. Определите предикат МНОЖЕСТВО-Р, который проверяет, является ли список множеством, т.е. входит ли каждый элемент в список лишь один раз.
-
+(print "Задача 32. Сдана")
 (defun множество-р(list)
     (( lambda( first rest )
                ( cond
@@ -112,7 +112,7 @@
 (print (множество-р '())); T – множество
 
 ;42. Определите функцию, находящую максимальное из значений, находящихся в вершинах дерева.
-
+(print "Задача 42. Сдана")
 (defun max-c (a b) 
     (if (> a b) a b))
 
@@ -126,7 +126,7 @@
 (print (max-elem '(1 (2 (6) ()) (3 () (10)))));10
 
 ;47. Определите функцию УДАЛИТЬ-ВСЕ-СВОЙСТВА, которая удаляет все свойства символа.
-
+(print "Задача 47. Сдана")
 (defun удалить-все-свойства(x)
     ( (lambda (свойства)
          ( cond 
